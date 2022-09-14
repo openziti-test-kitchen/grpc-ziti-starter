@@ -47,6 +47,47 @@ $ go run ./client -identity ~/work/nf-advdev/ek-client.json -service ek-test -wh
 * profit!!
 
 
+## How it's done
+In this project we use `google.golang.com/grpc`.
+
+### Server
+We start gRPC server with Ziti listener.
+
+This is all is needed to zitify gRPC server (error handling is stripped for brevity):
+```go
+// bootstrap Ziti
+ztx := ziti.NewContextWithConfig(cfg)
+_ = ztx.Authenticate()
+lis, _ := ztx.Listen(*service)
+
+// standard gRCP init
+s := grpc.NewServer()
+protocol.RegisterAnswerServiceServer(s, &server{})
+
+// serve using Ziti server connection
+_ = s.Serve(lis)
+```
+
+### Client
+We create gRPC client with Ziti connection, like this
+```golang
+// bootstrap Ziti
+ztx := ziti.NewContextWithConfig(cfg)
+_ = ztx.Authenticate()
+
+// Provide Ziti Dialer to connect to ziti service
+conn, err := grpc.Dial(*service,
+     grpc.WithTransportCredentials(insecure.NewCredentials()),
+     grpc.WithContextDialer(func(ctx context.Context, s string) (net.Conn, error) {
+              return ztx.Dial(s)
+     }),
+)
+
+// create client
+c := protocol.NewAnswerServiceClient(conn)
+```
+
+
 ## Have questions?
 
 * Follow our [Blog](https://openziti.io/)
