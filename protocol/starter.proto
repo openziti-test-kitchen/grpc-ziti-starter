@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option go_package = "protocol";
+//option java_multiple_files = true;
+//option java_package = "com.github.ekoby.grpc.starter";
+//option java_outer_classname = "AnswerServiceProto";
+
+package protocol;
+
+// The greeting service definition.
+service AnswerService {
+  // ask a question
+  rpc WhatIs (Question) returns (Answer) {}
+}
+
+// sample request
+message Question {
+  string what = 1;
+}
+
+// sample response
+message Answer {
+  string answer = 1;
+}
