@@ -1,4 +1,4 @@
-module github.com/ekoby/grpc-ziti-starter
+module github.com/openziti-test-kitchen/grpc-ziti-starter
 
 go 1.19
 

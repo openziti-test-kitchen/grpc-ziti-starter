@@ -15,9 +15,12 @@ Create your project's repo using this one as a
 * Get yourself an OpenZiti network:
   * follow [quickstart](https://openziti.github.io/ziti/quickstarts/quickstart-overview.html) docs
   * or, use Ziti Edge Developer Sandobox([ZEDS](https://zeds.openziti.org))
-* Create a Ziti [service](https://openziti.github.io/ziti/services/overview.html) to use for gRPC
+* Create a Ziti [service](https://openziti.github.io/ziti/services/overview.html) to use for gRPC.
 * Create, and enroll you server and client [identities](https://openziti.github.io/ziti/identities/overview.html)
-* Run it!
+* Run it! See below:
+  * 'grpc-service' - name of the service
+  * 'client.json' - name of client identity file
+  * 'server.json' - name of server identity file
 
 Run server:
 ```console
@@ -29,10 +32,10 @@ Note: the server is powered by OpenZiti network and does not have any inbound po
 
 Run client:
 ```console
-$ go run ./client -identity ~/work/nf-advdev/ek-client.json -service ek-test -what-is foo
+$ go run ./client -identity client.json -service grpc-service -what-is foo
 2022/09/14 14:29:32 Answer: I don't know what foo is :(
 
-$ go run ./client -identity ~/work/nf-advdev/ek-client.json -service ek-test -what-is ziti
+$ go run ./client -identity client.json -service grpc-service -what-is ziti
 2022/09/14 14:29:56 Answer: ziti is a type of pasta
 ```
 
@@ -91,7 +94,7 @@ c := protocol.NewAnswerServiceClient(conn)
 ## Have questions?
 
 * Follow our [Blog](https://openziti.io/)
+* Read [Documentation](https://openziti.github.io)
 * Join [Discussion](https://openziti.discourse.group)
-* [Development](https://github.com/openziti)
-* [Documentation](https://openziti.github.io) 
+* Contribute to [Development](https://github.com/openziti)
 * Like it? Give us a [star](https://github.com/openziti/ziti)

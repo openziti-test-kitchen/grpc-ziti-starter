@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"flag"
-	"github.com/ekoby/grpc-ziti-starter/protocol"
+	"github.com/openziti-test-kitchen/grpc-ziti-starter/protocol"
 	"github.com/openziti/sdk-golang/ziti"
 	"github.com/openziti/sdk-golang/ziti/config"
 	"log"
