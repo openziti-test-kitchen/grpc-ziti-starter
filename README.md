@@ -4,6 +4,9 @@ OpenZiti gRPC Project Template
 Use this project to quickly start your next gRPC project that uses open-source, secure, zero-trust
 [OpenZiti](https://github.com/openziti/ziti) Network.
 
+This project shows how to use your own `net.Conn` and `net.Listener` implementations to override networking layer 
+in golang gRPC communications.
+
 
 ## Start
 
