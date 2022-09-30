@@ -2,7 +2,7 @@ OpenZiti gRPC Project Template
 ==============================
 
 Use this project to quickly start your next gRPC project that uses open-source, secure, zero-trust
-[OpenZiti](https://openziti.io) Network.
+[OpenZiti](https://github.com/openziti/ziti) Network.
 
 
 ## Start
